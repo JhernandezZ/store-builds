@@ -12,7 +12,7 @@ function install(options) {
         }
         const project = workspace.projects[options.project];
         const path = project_1.buildDefaultPath(project);
-        return schematics_1.chain([templates_1.addTemplates(path + '/config', 'config')]);
+        return schematics_1.chain([templates_1.addTemplates(path + '/', 'app')]);
     };
 }
 exports.install = install;
