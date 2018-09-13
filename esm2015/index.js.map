@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/index.ts"
+  ],
+  "sourcesContent": [
+    "/**\r\n * The public api for consumers of @ngxs/store\r\n */\r\n\r\nexport * from './src/public_api';\r\n\r\n/**\r\n * The plugin api for the stuff that a plugins needs\r\n */\r\nexport * from './src/plugin_api';\r\n"
+  ],
+  "names": [],
+  "mappings": ";;;AAIA,cAAc,kBAAkB,CAAC;AAKjC,cAAc,kBAAkB,CAAC"
+}

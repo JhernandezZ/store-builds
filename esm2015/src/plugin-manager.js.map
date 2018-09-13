@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "plugin-manager.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/plugin-manager.ts"
+  ],
+  "sourcesContent": [
+    "import { Injectable, Optional, SkipSelf, Inject } from '@angular/core';\r\nimport { NgxsPluginFn, NGXS_PLUGINS, NgxsPlugin } from './symbols';\r\n\r\n/**\r\n * Plugin manager class\r\n * @ignore\r\n */\r\n@Injectable()\r\nexport class PluginManager {\r\n  plugins: NgxsPluginFn[] = [];\r\n\r\n  constructor(\r\n    @Optional()\r\n    @SkipSelf()\r\n    private _parentManager: PluginManager,\r\n    @Inject(NGXS_PLUGINS)\r\n    @Optional()\r\n    private _plugins: NgxsPlugin[]\r\n  ) {\r\n    this.register();\r\n  }\r\n\r\n  private register() {\r\n    if (!this._plugins) {\r\n      return;\r\n    }\r\n\r\n    this.plugins = this._plugins.map(plugin => {\r\n      if (plugin.handle) {\r\n        return plugin.handle.bind(plugin);\r\n      } else {\r\n        return plugin;\r\n      }\r\n    });\r\n\r\n    if (this._parentManager) {\r\n      this._parentManager.plugins.push(...this.plugins);\r\n    }\r\n  }\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,UAAU,EAAE,QAAQ,EAAE,QAAQ,EAAE,MAAM,EAAE,MAAM,eAAe,CAAC;AACvE,OAAO,EAAgB,YAAY,EAAc,MAAM,WAAW,CAAC;;;;;AAOnE,MAAM;IAGJ,YAGU,gBAGA;QAHA,mBAAc,GAAd,cAAc;QAGd,aAAQ,GAAR,QAAQ;uBARQ,EAAE;QAU1B,IAAI,CAAC,QAAQ,EAAE,CAAC;KACjB;IAEO,QAAQ;QACd,EAAE,CAAC,CAAC,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC,CAAC;YACnB,MAAM,CAAC;SACR;QAED,IAAI,CAAC,OAAO,GAAG,IAAI,CAAC,QAAQ,CAAC,GAAG,CAAC,MAAM,CAAC,EAAE;YACxC,EAAE,CAAC,CAAC,MAAM,CAAC,MAAM,CAAC,CAAC,CAAC;gBAClB,MAAM,CAAC,MAAM,CAAC,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,CAAC;aACnC;YAAC,IAAI,CAAC,CAAC;gBACN,MAAM,CAAC,MAAM,CAAC;aACf;SACF,CAAC,CAAC;QAEH,EAAE,CAAC,CAAC,IAAI,CAAC,cAAc,CAAC,CAAC,CAAC;YACxB,IAAI,CAAC,cAAc,CAAC,OAAO,CAAC,IAAI,CAAC,GAAG,IAAI,CAAC,OAAO,CAAC,CAAC;SACnD;KACF;;;YA/BF,UAAU;;;;YACE,aAAa,uBAIrB,QAAQ,YACR,QAAQ;wCAER,MAAM,SAAC,YAAY,cACnB,QAAQ"
+}

@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "ngxs-store.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/ngxs-store.ts"
+  ],
+  "sourcesContent": [
+    "/**\n * Generated bundle index. Do not edit.\n */\n\nexport * from './index';\n\nexport {InternalActions as ɵg,OrderedSubject as ɵf} from './src/actions-stream';\nexport {SelectFactory as ɵe} from './src/decorators/select';\nexport {InternalDispatchedActionResults as ɵl,InternalDispatcher as ɵm} from './src/internal/dispatcher';\nexport {StateContextFactory as ɵn} from './src/internal/state-context-factory';\nexport {StateFactory as ɵk} from './src/internal/state-factory';\nexport {InternalStateOperations as ɵo} from './src/internal/state-operations';\nexport {NgxsFeatureModule as ɵb,NgxsRootModule as ɵa,ROOT_OPTIONS as ɵd,ngxsConfigFactory as ɵc} from './src/module';\nexport {PluginManager as ɵp} from './src/plugin-manager';\nexport {FEATURE_STATE_TOKEN as ɵi,NgxsConfig as ɵj,ROOT_STATE_TOKEN as ɵh} from './src/symbols';"
+  ],
+  "names": [],
+  "mappings": ";;;AAIA,cAAc,SAAS,CAAC;AAExB,OAAO,EAAC,eAAe,IAAI,EAAE,EAAC,cAAc,IAAI,EAAE,EAAC,MAAM,sBAAsB,CAAC;AAChF,OAAO,EAAC,aAAa,IAAI,EAAE,EAAC,MAAM,yBAAyB,CAAC;AAC5D,OAAO,EAAC,+BAA+B,IAAI,EAAE,EAAC,kBAAkB,IAAI,EAAE,EAAC,MAAM,2BAA2B,CAAC;AACzG,OAAO,EAAC,mBAAmB,IAAI,EAAE,EAAC,MAAM,sCAAsC,CAAC;AAC/E,OAAO,EAAC,YAAY,IAAI,EAAE,EAAC,MAAM,8BAA8B,CAAC;AAChE,OAAO,EAAC,uBAAuB,IAAI,EAAE,EAAC,MAAM,iCAAiC,CAAC;AAC9E,OAAO,EAAC,iBAAiB,IAAI,EAAE,EAAC,cAAc,IAAI,EAAE,EAAC,YAAY,IAAI,EAAE,EAAC,iBAAiB,IAAI,EAAE,EAAC,MAAM,cAAc,CAAC;AACrH,OAAO,EAAC,aAAa,IAAI,EAAE,EAAC,MAAM,sBAAsB,CAAC;AACzD,OAAO,EAAC,mBAAmB,IAAI,EAAE,EAAC,UAAU,IAAI,EAAE,EAAC,gBAAgB,IAAI,EAAE,EAAC,MAAM,eAAe,CAAC"
+}

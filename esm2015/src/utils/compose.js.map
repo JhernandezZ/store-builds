@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "compose.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/utils/compose.ts"
+  ],
+  "sourcesContent": [
+    "/**\r\n * Composes a array of functions from left to right. Example:\r\n *\r\n *      compose([fn, final])(state, action);\r\n *\r\n * then the funcs have a signature like:\r\n *\r\n *      function fn (state, action, next) {\r\n *          console.log('here', state, action, next);\r\n *          return next(state, action);\r\n *      }\r\n *\r\n *      function final (state, action) {\r\n *          console.log('here', state, action);\r\n *          return state;\r\n *      }\r\n *\r\n * the last function should not call `next`.\r\n *\r\n * @ignore\r\n */\r\nexport const compose = funcs => (...args) => {\r\n  const curr = funcs.shift();\r\n  return curr(...args, (...nextArgs) => compose(funcs)(...nextArgs));\r\n};\r\n"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;AAqBA,MAAM,CAAC,MAAM,OAAO,GAAG,KAAK,CAAC,EAAE,CAAC,CAAC,GAAG,IAAI,EAAE,EAAE;IAC1C,MAAM,IAAI,GAAG,KAAK,CAAC,KAAK,EAAE,CAAC;IAC3B,MAAM,CAAC,IAAI,CAAC,GAAG,IAAI,EAAE,CAAC,GAAG,QAAQ,EAAE,EAAE,CAAC,OAAO,CAAC,KAAK,CAAC,CAAC,GAAG,QAAQ,CAAC,CAAC,CAAC;CACpE,CAAC"
+}

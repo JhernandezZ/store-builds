@@ -1,0 +1,1 @@
+{"moduleName":null,"summaries":[{"symbol":{"__symbol":0,"members":[]},"metadata":{"__symbolic":"class","statics":{"type":"@@INIT"}}},{"symbol":{"__symbol":1,"members":[]},"metadata":{"__symbolic":"class","statics":{"type":"@@UPDATE_STATE"}}}],"symbols":[{"__symbol":0,"name":"InitState","filePath":"./actions"},{"__symbol":1,"name":"UpdateState","filePath":"./actions"}]}

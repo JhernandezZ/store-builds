@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "freeze.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/utils/freeze.ts"
+  ],
+  "sourcesContent": [
+    "/**\r\n * Object freeze code\r\n * https://github.com/jsdf/deep-freeze\r\n */\r\nexport const deepFreeze = o => {\r\n  Object.freeze(o);\r\n\r\n  const oIsFunction = typeof o === 'function';\r\n  const hasOwnProp = Object.prototype.hasOwnProperty;\r\n\r\n  Object.getOwnPropertyNames(o).forEach(function(prop) {\r\n    if (\r\n      hasOwnProp.call(o, prop) &&\r\n      (oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true) &&\r\n      o[prop] !== null &&\r\n      (typeof o[prop] === 'object' || typeof o[prop] === 'function') &&\r\n      !Object.isFrozen(o[prop])\r\n    ) {\r\n      deepFreeze(o[prop]);\r\n    }\r\n  });\r\n\r\n  return o;\r\n};\r\n"
+  ],
+  "names": [],
+  "mappings": ";;;;AAIA,MAAM,CAAC,MAAM,UAAU,GAAG,CAAC,CAAC,EAAE;IAC5B,MAAM,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC;IAEjB,MAAM,WAAW,GAAG,OAAO,CAAC,KAAK,UAAU,CAAC;IAC5C,MAAM,UAAU,GAAG,MAAM,CAAC,SAAS,CAAC,cAAc,CAAC;IAEnD,MAAM,CAAC,mBAAmB,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC,UAAS,IAAI;QACjD,EAAE,CAAC,CACD,UAAU,CAAC,IAAI,CAAC,CAAC,EAAE,IAAI,CAAC;YACxB,CAAC,WAAW,CAAC,CAAC,CAAC,IAAI,KAAK,QAAQ,IAAI,IAAI,KAAK,QAAQ,IAAI,IAAI,KAAK,WAAW,CAAC,CAAC,CAAC,IAAI,CAAC;YACrF,CAAC,CAAC,IAAI,CAAC,KAAK,IAAI;YAChB,CAAC,OAAO,CAAC,CAAC,IAAI,CAAC,KAAK,QAAQ,IAAI,OAAO,CAAC,CAAC,IAAI,CAAC,KAAK,UAAU,CAAC;YAC9D,CAAC,MAAM,CAAC,QAAQ,CAAC,CAAC,CAAC,IAAI,CAAC,CAC1B,CAAC,CAAC,CAAC;YACD,UAAU,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC;SACrB;KACF,CAAC,CAAC;IAEH,MAAM,CAAC,CAAC,CAAC;CACV,CAAC"
+}

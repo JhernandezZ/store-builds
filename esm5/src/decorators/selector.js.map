@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "selector.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/decorators/selector.ts"
+  ],
+  "sourcesContent": [
+    "import { createSelector } from '../utils/selector-utils';\r\n\r\n/**\r\n * Decorator for memoizing a state selector.\r\n */\r\nexport function Selector(selectors?: any[]) {\r\n  return (target: any, key: string, descriptor: PropertyDescriptor) => {\r\n    if (descriptor.value !== null) {\r\n      const originalFn = descriptor.value;\r\n\r\n      const memoizedFn = createSelector(selectors, originalFn, { containerClass: target, selectorName: key });\r\n\r\n      return {\r\n        configurable: true,\r\n        get() {\r\n          return memoizedFn;\r\n        }\r\n      };\r\n    } else {\r\n      throw new Error('Selectors only work on methods');\r\n    }\r\n  };\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,yBAAyB,CAAC;;;;AAKzD,MAAM,mBAAmB,SAAiB;IACxC,MAAM,CAAC,CAAC,MAAW,EAAE,GAAW,EAAE,UAA8B,EAAE,EAAE;QAClE,EAAE,CAAC,CAAC,UAAU,CAAC,KAAK,KAAK,IAAI,CAAC,CAAC,CAAC;YAC9B,MAAM,UAAU,GAAG,UAAU,CAAC,KAAK,CAAC;YAEpC,MAAM,UAAU,GAAG,cAAc,CAAC,SAAS,EAAE,UAAU,EAAE,EAAE,cAAc,EAAE,MAAM,EAAE,YAAY,EAAE,GAAG,EAAE,CAAC,CAAC;YAExG,MAAM,CAAC;gBACL,YAAY,EAAE,IAAI;gBAClB,GAAG;oBACD,MAAM,CAAC,UAAU,CAAC;iBACnB;aACF,CAAC;SACH;QAAC,IAAI,CAAC,CAAC;YACN,MAAM,IAAI,KAAK,CAAC,gCAAgC,CAAC,CAAC;SACnD;KACF,CAAC;CACH"
+}

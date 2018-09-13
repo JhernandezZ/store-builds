@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "state.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/decorators/state.ts"
+  ],
+  "sourcesContent": [
+    "import { ensureStoreMetadata } from '../internal/internals';\r\nimport { StoreOptions, META_KEY } from '../symbols';\r\n\r\nconst stateNameRegex = new RegExp('^[a-zA-Z0-9]+$');\r\n\r\n/**\r\n * Error message\r\n * @ignore\r\n */\r\nexport const stateNameErrorMessage = name =>\r\n  `${name} is not a valid state name. It needs to be a valid object property name.`;\r\n\r\n/**\r\n * Decorates a class with ngxs state information.\r\n */\r\nexport function State<T>(options: StoreOptions<T>) {\r\n  return function(target: any) {\r\n    const meta = ensureStoreMetadata(target);\r\n\r\n    // Handle inheritance\r\n    if (Object.getPrototypeOf(target).hasOwnProperty(META_KEY)) {\r\n      const parentMeta = Object.getPrototypeOf(target)[META_KEY];\r\n\r\n      meta.actions = {\r\n        ...meta.actions,\r\n        ...parentMeta.actions\r\n      };\r\n    }\r\n\r\n    meta.children = options.children;\r\n    meta.defaults = options.defaults;\r\n    meta.name = options.name;\r\n\r\n    if (!options.name) {\r\n      throw new Error(`States must register a 'name' property`);\r\n    }\r\n\r\n    if (!stateNameRegex.test(options.name)) {\r\n      throw new Error(stateNameErrorMessage(options.name));\r\n    }\r\n  };\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,uBAAuB,CAAC;AAC5D,OAAO,EAAgB,QAAQ,EAAE,MAAM,YAAY,CAAC;AAEpD,MAAM,cAAc,GAAG,IAAI,MAAM,CAAC,gBAAgB,CAAC,CAAC;;;;;AAMpD,MAAM,CAAC,MAAM,qBAAqB,GAAG,IAAI,CAAC,EAAE,CAC1C,GAAG,IAAI,0EAA0E,CAAC;;;;AAKpF,MAAM,gBAAmB,OAAwB;IAC/C,MAAM,CAAC,UAAS,MAAW;QACzB,MAAM,IAAI,GAAG,mBAAmB,CAAC,MAAM,CAAC,CAAC;;QAGzC,EAAE,CAAC,CAAC,MAAM,CAAC,cAAc,CAAC,MAAM,CAAC,CAAC,cAAc,CAAC,QAAQ,CAAC,CAAC,CAAC,CAAC;YAC3D,MAAM,UAAU,GAAG,MAAM,CAAC,cAAc,CAAC,MAAM,CAAC,CAAC,QAAQ,CAAC,CAAC;YAE3D,IAAI,CAAC,OAAO,qBACP,IAAI,CAAC,OAAO,EACZ,UAAU,CAAC,OAAO,CACtB,CAAC;SACH;QAED,IAAI,CAAC,QAAQ,GAAG,OAAO,CAAC,QAAQ,CAAC;QACjC,IAAI,CAAC,QAAQ,GAAG,OAAO,CAAC,QAAQ,CAAC;QACjC,IAAI,CAAC,IAAI,GAAG,OAAO,CAAC,IAAI,CAAC;QAEzB,EAAE,CAAC,CAAC,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC;YAClB,MAAM,IAAI,KAAK,CAAC,wCAAwC,CAAC,CAAC;SAC3D;QAED,EAAE,CAAC,CAAC,CAAC,cAAc,CAAC,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC;YACvC,MAAM,IAAI,KAAK,CAAC,qBAAqB,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC;SACtD;KACF,CAAC;CACH"
+}

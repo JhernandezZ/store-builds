@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "public_api.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/public_api.ts"
+  ],
+  "sourcesContent": [
+    "export { NgxsModule } from './module';\r\nexport { Action } from './decorators/action';\r\nexport { Store } from './store';\r\nexport { State } from './decorators/state';\r\nexport { Select } from './decorators/select';\r\nexport { Actions } from './actions-stream';\r\nexport { ofAction, ofActionDispatched, ofActionSuccessful, ofActionCanceled, ofActionErrored } from './operators/of-action';\r\nexport { NgxsPlugin, NgxsPluginFn, StateContext, NgxsOnInit } from './symbols';\r\nexport { Selector } from './decorators/selector';\r\nexport { getActionTypeFromInstance, actionMatcher } from './utils/utils';\r\nexport { createSelector } from './utils/selector-utils';\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,UAAU,CAAC;AACtC,OAAO,EAAE,MAAM,EAAE,MAAM,qBAAqB,CAAC;AAC7C,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAChC,OAAO,EAAE,KAAK,EAAE,MAAM,oBAAoB,CAAC;AAC3C,OAAO,EAAE,MAAM,EAAE,MAAM,qBAAqB,CAAC;AAC7C,OAAO,EAAE,OAAO,EAAE,MAAM,kBAAkB,CAAC;AAC3C,OAAO,EAAE,QAAQ,EAAE,kBAAkB,EAAE,kBAAkB,EAAE,gBAAgB,EAAE,eAAe,EAAE,MAAM,uBAAuB,CAAC;AAE5H,OAAO,EAAE,QAAQ,EAAE,MAAM,uBAAuB,CAAC;AACjD,OAAO,EAAE,yBAAyB,EAAE,aAAa,EAAE,MAAM,eAAe,CAAC;AACzE,OAAO,EAAE,cAAc,EAAE,MAAM,wBAAwB,CAAC"
+}

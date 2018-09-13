@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "memoize.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/utils/memoize.ts"
+  ],
+  "sourcesContent": [
+    "function defaultEqualityCheck(a, b) {\r\n  return a === b;\r\n}\r\n\r\nfunction areArgumentsShallowlyEqual(equalityCheck, prev, next) {\r\n  if (prev === null || next === null || prev.length !== next.length) {\r\n    return false;\r\n  }\r\n\r\n  // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.\r\n  const length = prev.length;\r\n  for (let i = 0; i < length; i++) {\r\n    if (!equalityCheck(prev[i], next[i])) {\r\n      return false;\r\n    }\r\n  }\r\n\r\n  return true;\r\n}\r\n\r\n/**\r\n * Memoize a function on its last inputs only.\r\n * Oringinally from: https://github.com/reduxjs/reselect/blob/master/src/index.js\r\n *\r\n * @ignore\r\n */\r\nexport function memoize(func, equalityCheck = defaultEqualityCheck) {\r\n  let lastArgs = null;\r\n  let lastResult = null;\r\n  // we reference arguments instead of spreading them for performance reasons\r\n  return <(...args) => any>function memoized() {\r\n    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {\r\n      // apply arguments instead of spreading for performance.\r\n      lastResult = func.apply(null, arguments);\r\n    }\r\n\r\n    lastArgs = arguments;\r\n    return lastResult;\r\n  };\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,8BAA8B,CAAC,EAAE,CAAC;IAChC,MAAM,CAAC,CAAC,KAAK,CAAC,CAAC;CAChB;AAED,oCAAoC,aAAa,EAAE,IAAI,EAAE,IAAI;IAC3D,EAAE,CAAC,CAAC,IAAI,KAAK,IAAI,IAAI,IAAI,KAAK,IAAI,IAAI,IAAI,CAAC,MAAM,KAAK,IAAI,CAAC,MAAM,CAAC,CAAC,CAAC;QAClE,MAAM,CAAC,KAAK,CAAC;KACd;;IAGD,MAAM,MAAM,GAAG,IAAI,CAAC,MAAM,CAAC;IAC3B,GAAG,CAAC,CAAC,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,MAAM,EAAE,CAAC,EAAE,EAAE,CAAC;QAChC,EAAE,CAAC,CAAC,CAAC,aAAa,CAAC,IAAI,CAAC,CAAC,CAAC,EAAE,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;YACrC,MAAM,CAAC,KAAK,CAAC;SACd;KACF;IAED,MAAM,CAAC,IAAI,CAAC;CACb;;;;;;;AAQD,MAAM,kBAAkB,IAAI,EAAE,aAAa,GAAG,oBAAoB;IAChE,IAAI,QAAQ,GAAG,IAAI,CAAC;IACpB,IAAI,UAAU,GAAG,IAAI,CAAC;;IAEtB,MAAM,CAAmB;QACvB,EAAE,CAAC,CAAC,CAAC,0BAA0B,CAAC,aAAa,EAAE,QAAQ,EAAE,SAAS,CAAC,CAAC,CAAC,CAAC;;YAEpE,UAAU,GAAG,IAAI,CAAC,KAAK,CAAC,IAAI,EAAE,SAAS,CAAC,CAAC;SAC1C;QAED,QAAQ,GAAG,SAAS,CAAC;QACrB,MAAM,CAAC,UAAU,CAAC;KACnB,CAAC;CACH"
+}

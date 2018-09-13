@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "actions.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/actions/actions.ts"
+  ],
+  "sourcesContent": [
+    "/**\r\n * Init action\r\n */\r\nexport class InitState {\r\n  static readonly type = '@@INIT';\r\n}\r\n\r\n/**\r\n * Update action\r\n */\r\nexport class UpdateState {\r\n  static readonly type = '@@UPDATE_STATE';\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": ";;;AAGA,MAAM;;iBACmB,QAAQ;;;;AAMjC,MAAM;;mBACmB,gBAAgB"
+}

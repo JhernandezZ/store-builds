@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "state-stream.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/internal/state-stream.ts"
+  ],
+  "sourcesContent": [
+    "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\n/**\r\n * BehaviorSubject of the entire state.\r\n * @ignore\r\n */\r\n@Injectable()\r\nexport class StateStream extends BehaviorSubject<any> {\r\n  constructor() {\r\n    super({});\r\n  }\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAC3C,OAAO,EAAE,eAAe,EAAE,MAAM,MAAM,CAAC;;;;;AAOvC,MAAM,kBAAmB,SAAQ,eAAoB;IACnD;QACE,KAAK,CAAC,EAAE,CAAC,CAAC;KACX;;;YAJF,UAAU"
+}

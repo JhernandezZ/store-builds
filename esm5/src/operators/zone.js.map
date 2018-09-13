@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "zone.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/operators/zone.ts"
+  ],
+  "sourcesContent": [
+    "import { Observable, Observer } from 'rxjs';\r\nimport { NgZone } from '@angular/core';\r\n\r\n/**\r\n * Operator to run the `subscribe` in a Angular zone.\r\n */\r\nexport function enterZone<T>(zone: NgZone) {\r\n  return (source: Observable<T>) => {\r\n    return new Observable((sink: Observer<T>) => {\r\n      return source.subscribe({\r\n        next(x) {\r\n          zone.run(() => sink.next(x));\r\n        },\r\n        error(e) {\r\n          zone.run(() => sink.error(e));\r\n        },\r\n        complete() {\r\n          zone.run(() => sink.complete());\r\n        }\r\n      });\r\n    });\r\n  };\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,UAAU,EAAY,MAAM,MAAM,CAAC;;;;AAM5C,MAAM,oBAAuB,IAAY;IACvC,MAAM,CAAC,CAAC,MAAqB,EAAE,EAAE;QAC/B,MAAM,CAAC,IAAI,UAAU,CAAC,CAAC,IAAiB,EAAE,EAAE;YAC1C,MAAM,CAAC,MAAM,CAAC,SAAS,CAAC;gBACtB,IAAI,CAAC,CAAC;oBACJ,IAAI,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC;iBAC9B;gBACD,KAAK,CAAC,CAAC;oBACL,IAAI,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC;iBAC/B;gBACD,QAAQ;oBACN,IAAI,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,IAAI,CAAC,QAAQ,EAAE,CAAC,CAAC;iBACjC;aACF,CAAC,CAAC;SACJ,CAAC,CAAC;KACJ,CAAC;CACH"
+}

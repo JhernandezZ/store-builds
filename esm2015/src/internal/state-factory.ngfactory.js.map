@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "state-factory.ngfactory.js",
+  "sourceRoot": "",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/internal/state-factory.ngfactory.ts"
+  ],
+  "names": [],
+  "mappings": "",
+  "sourcesContent": [
+    "import * as i0 from '@angular/core';\ni0.ComponentFactory;\n"
+  ]
+}

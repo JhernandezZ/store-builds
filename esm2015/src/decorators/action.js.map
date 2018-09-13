@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "action.js",
+  "sources": [
+    "ng://@ngxs/store/packages/store/src/decorators/action.ts"
+  ],
+  "sourcesContent": [
+    "import { ensureStoreMetadata } from '../internal/internals';\r\nimport { ActionOptions } from '../symbols';\r\n\r\n/**\r\n * Decorates a method with a action information.\r\n */\r\nexport function Action(actions: any | any[], options?: ActionOptions) {\r\n  return function(target: any, name: string, descriptor: TypedPropertyDescriptor<any>) {\r\n    const meta = ensureStoreMetadata(target.constructor);\r\n\r\n    if (!Array.isArray(actions)) {\r\n      actions = [actions];\r\n    }\r\n\r\n    for (const action of actions) {\r\n      const type = action.type;\r\n\r\n      if (!action.type) {\r\n        throw new Error(`Action ${action.name} is missing a static \"type\" property`);\r\n      }\r\n\r\n      if (!meta.actions[type]) {\r\n        meta.actions[type] = [];\r\n      }\r\n\r\n      meta.actions[type].push({\r\n        fn: name,\r\n        options: options || {},\r\n        type\r\n      });\r\n    }\r\n  };\r\n}\r\n"
+  ],
+  "names": [],
+  "mappings": "AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,uBAAuB,CAAC;;;;AAM5D,MAAM,iBAAiB,OAAoB,EAAE,OAAuB;IAClE,MAAM,CAAC,UAAS,MAAW,EAAE,IAAY,EAAE,UAAwC;QACjF,MAAM,IAAI,GAAG,mBAAmB,CAAC,MAAM,CAAC,WAAW,CAAC,CAAC;QAErD,EAAE,CAAC,CAAC,CAAC,KAAK,CAAC,OAAO,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC;YAC5B,OAAO,GAAG,CAAC,OAAO,CAAC,CAAC;SACrB;QAED,GAAG,CAAC,CAAC,MAAM,MAAM,IAAI,OAAO,CAAC,CAAC,CAAC;YAC7B,MAAM,IAAI,GAAG,MAAM,CAAC,IAAI,CAAC;YAEzB,EAAE,CAAC,CAAC,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC,CAAC;gBACjB,MAAM,IAAI,KAAK,CAAC,UAAU,MAAM,CAAC,IAAI,sCAAsC,CAAC,CAAC;aAC9E;YAED,EAAE,CAAC,CAAC,CAAC,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC;gBACxB,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,GAAG,EAAE,CAAC;aACzB;YAED,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,IAAI,CAAC;gBACtB,EAAE,EAAE,IAAI;gBACR,OAAO,EAAE,OAAO,IAAI,EAAE;gBACtB,IAAI;aACL,CAAC,CAAC;SACJ;KACF,CAAC;CACH"
+}
