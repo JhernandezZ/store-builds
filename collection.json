@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Installs @ngxs/store & injects in app.module",
+      "schema": "./schematics/install/schema.json",
+      "factory": "./schematics/install/index#install"
+    }
+  }
+}
